@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerFragment">
+
+<!-- CSS Files -->
+	<link type="text/css" href="/PGHMS/resources/css/styles.css" rel="stylesheet"></link>
+	<link type="text/css" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+
+<!--  js files -->
+<script type="text/javascript" src="/PGHMS/resources/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/PGHMS/resources/js/slider.js"></script>
+<script type="text/javascript" src="/PGHMS/resources/js/common.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<title>PGHMS</title>
+</head>
+
+<body class="noheader">
+
+	<div id="container" th:fragment="defaultFragment">
+
+		<div id="header">
+			<div id="top-navigation" align="right">
+				<label style="color:#C0C0C0">Welcome&nbsp;<strong> <!-- #C0C0C0 -->
+				<span th:text="${beans.utilities.getFullName()}"></span></strong></label> | 
+				<a th:href="@{/j_spring_security_logout}">Log out</a>  
+				<!-- <a th:href="@{/main/resetPassword}">Reset Password</a> -->
+			</div>
+			<h1>
+				<a href="/">PGHMS</a>
+			</h1>
+			<h2>HOSPITAL MANAEMENT SYSTEM</h2>
+			<div class="clear"></div>
+		</div>
+
+		<div id="nav" th:switch="${beans.utilities.getLoginRole()}">
+
+			<!-- ******************************************* For Admin ***********************************************************-->
+			
+			<ul class="sf-menu dropdown sf-js-enabled sf-shadow" th:case="'Admin'">
+				<li class=""><a class="has_submenu" href="">Pharmacy</a>
+					<ul>
+						<li><a href="/PGHMS/main/dailyAccountOfOperationSection">Daily Account Of Operation Section</a></li>
+						<li><a href="/PGHMS/main/dailyAccountOfPharmacy">Daily account of Pharmacy</a></li>
+						<li><a href="/PGHMS/main/monthlyStatementOfOperationSectionPharmacy">Monthly Statement Of Operation Section</a></li>
+						<li><a href="/PGHMS/main/monthlyAccountOfPharmacy">Monthly Account Of Pharmacy</a></li>
+						<li><a href="/PGHMS/main/stockBalanceOfPharmacy">Stock Balance Of Pharmacy</a></li>
+						<li><a href="/PGHMS/main/statementOfCompany">Statement Of Company</a></li>			
+					</ul>
+				</li>
+				<li class=""><a class="has_submenu" href="">Pathology</a>
+					<ul>
+						<li><a href="/PGHMS/main/admissionForm">Admission Form</a></li>
+						<li><a href="/PGHMS/main/financialDetailsOfPathology">Financial Details Of Pathology</a></li>
+						<li><a href="/PGHMS/main/monthlyStatementOfOperationSectionPathology">Monthly Statement Of Operation Section</a></li>
+						<li><a href="/PGHMS/main/pathology">Pathology</a></li>
+					</ul>
+				</li>
+				<li class=""><a class="has_submenu" href="">Report</a>	
+					
+				</li>
+				<li class=""><a class="has_submenu" href="">Setup</a>
+					<ul>
+						<li><a href="/PGHMS/main/userForm">User Setup</a></li>
+						<li><a href="/PGHMS/main/resetPassword">Reset Password</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+	<div id="footer" th:fragment="footerFragment">
+	    <div id="footer-links">
+	            <p>Copyright &copy;  <a href="http://www.google.com/">Pulse General Hospital</a>, Developed by Md.Atequer Rahman</p>
+	    </div>  
+	</div>
+</body>
+</html>

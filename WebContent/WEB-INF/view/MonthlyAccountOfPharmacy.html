@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Monthly Account Of Pharmacy</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Monthly Account Of Pharmacy</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Date</label> 
+					<input 	type="text" id="dateMAO" name="dateMAO" />
+				</p>
+				<p>
+					<label>Total Debit</label> 
+					<input 	type="text" id="totalDebitMAO" name="totalDebitMAO"  />
+				</p>
+				<p>
+					<label>Total Credit</label> 
+					<input 	type="text" id="totCreditMAO" name="totCreditMAO"  />
+				</p>
+				<p>
+					<label>Balance</label> 
+					<input 	type="text" id="balanceMAO" name="balanceMAO"  />
+				</p>
+				<p>
+					<label>Remarks</label> 
+					<input 	type="text" id="remarkMAO" name="remarkMAO"  />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Date</th>
+						<th>Total Credit</th>
+						<th>Total Debit</th>
+						<th>Balance</th>
+						<th>Remarks</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

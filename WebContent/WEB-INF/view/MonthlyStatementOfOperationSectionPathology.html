@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Monthly Statement Of Operation Section</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Monthly Statement Of Operation Section</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Serial No.</label> 
+					<input 	type="text" id="slNoMSOSP" name="slNoMSOSP" />
+				</p>
+				<p>
+					<label>Date</label> 
+					<input 	type="text" id="datePathMSOSP" name="datePathMSOSP"  />
+				</p>
+				<p>
+					<label>Patients Name</label> 
+					<input 	type="text" id="ptnNamePathMSOSP" name="ptnNamePathMSOSP"  />
+				</p>
+				<p>
+					<label>Operation Name</label> 
+					<input 	type="text" id="operNamePathMSOSP" name="operNamePathMSOSP"  />
+				</p>
+				<p>
+					<label>Contract Money</label> 
+					<input 	type="text" id="contMoneyPathMSOSP" name="contMoneyPathMSOSP"  />
+				</p>
+				<p>
+					<label>Anesthesia Payment</label> 
+					<input 	type="text" id="anesthPaymentPathMSOSP" name="anesthPaymentPathMSOSP"  />
+				</p>
+				<p>
+					<label>Sergeon Payment</label> 
+					<input 	type="text" id="srgnPaymentPathMSOSP" name="srgnPaymentPathMSOSP"  />
+				</p>
+				<p>
+					<label>Agent Commission</label> 
+					<input 	type="text" id="agntCommPathMSOSP" name="agntCommPathMSOSP"  />
+				</p>
+				<p>
+					<label>Agent Type</label> 
+					<input 	type="text" id="medicinePathMSOSP" name="medicinePathMSOSP"  />
+				</p>
+				<p>
+					<label>Nurse Commission</label> 
+					<input 	type="text" id="nurseCommPathMSOSP" name="nurseCommPathMSOSP"  />
+				</p>
+				<p>
+					<label>Net Amount</label> 
+					<input 	type="text" id="netAmountMSOSP" name="netAmountMSOSP"  />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Serial No.</th>
+						<th>Date</th>
+						<th>Patients Name</th>
+						<th>Operation Name</th>
+						<th>Contract Money</th>
+						<th>Anesthesia Payment</th>
+						<th>Sergeon Payment</th>
+						<th>Agent Commission</th>
+						<th>Agent Type</th>
+						<th>Nurse Commission</th>
+						<th>Net Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

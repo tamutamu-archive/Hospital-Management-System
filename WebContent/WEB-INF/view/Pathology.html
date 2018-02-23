@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Monthly Statement Of Operation Section</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Monthly Statement Of Operation Section</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Patients Name</label> 
+					<input 	type="text" id="patientsNamePathology" name="patientsNamePathology" />
+				</p>
+				<p>
+					<label>Lab</label> 
+					<input 	type="text" id="labPathology" name="labPathology" />
+				</p>
+				<p>
+					<label>U/S</label> 
+					<input 	type="text" id="usPathology" name="usPathology" />
+				</p>
+				<p>
+					<label>ECG</label> 
+					<input 	type="text" id="ecgPathology" name="ecgPathology" />
+				</p>
+				<p>
+					<label>Others</label> 
+					<input 	type="text" id="othersPathology" name="othersPathology" />
+				</p>
+				<p>
+					<label>Total</label> 
+					<input 	type="text" id="totaPathology" name="totaPathology" />
+				</p>
+				<p>
+					<label>Commission</label> 
+					<input 	type="text" id="commissionPathology" name="commissionPathology" />
+				</p>
+				<p>
+					<label>Agent Commission</label> 
+					<input 	type="text" id="agentCommissionPathology" name="agentCommissionPathology" />
+				</p>
+				<p>
+					<label>Agent Name</label> 
+					<input 	type="text" id="agentNamePathology" name="agentNamePathology" />
+				</p>
+				<p>
+					<label>Net Amount</label> 
+					<input 	type="text" id="netAmountPathology" name="netAmountPathology" />
+				</p>
+				<p>
+					<label>X-Ray</label> 
+					<input 	type="text" id="xRayPathology" name="xRayPathology" />
+				</p>
+				<p>
+					<label>Remarks</label> 
+					<input 	type="text" id="remarksPathology" name="remarksPathology" />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Patients Name</th>
+						<th>Lab</th>
+						<th>U/S</th>
+						<th>ECG</th>
+						<th>Others</th>
+						<th>Total</th>
+						<th>Commission</th>
+						<th>Agent Commission</th>
+						<th>Agent Name</th>
+						<th>Net Amount</th>
+						<th>X-Ray</th>
+						<th>Remarks</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="UserWiseExpenseReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="20" bottomMargin="20" uuid="40727f96-e3e2-453f-9afd-2fc964d3be65">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dateFrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateTo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="empID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="empName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * From t_Expense Where (expense_SubmitDate Between $P{dateFrom} And $P{dateTo}) And expense_EmployeeId =  $P{empID}]]>
+	</queryString>
+	<field name="expense_Id" class="java.lang.Integer"/>
+	<field name="expense_Amount" class="java.math.BigDecimal"/>
+	<field name="expense_ApprovedRejectedDate" class="java.sql.Timestamp"/>
+	<field name="expense_ConveyanceDate" class="java.sql.Timestamp"/>
+	<field name="expense_Department" class="java.lang.String"/>
+	<field name="expense_Details" class="java.lang.String"/>
+	<field name="expense_EmployeeId" class="java.lang.String"/>
+	<field name="expense_PaidDate" class="java.sql.Timestamp"/>
+	<field name="expense_Status" class="java.lang.Integer"/>
+	<field name="expense_SubmitDate" class="java.sql.Timestamp"/>
+	<field name="expense_Type" class="java.lang.String"/>
+	<variable name="expStatus" class="java.lang.String">
+		<variableExpression><![CDATA[$F{expense_Status}.toString().equals( "1" )?"SUBMITTED":$F{expense_Status}.toString().equals( "2" )?"APPROVED":$F{expense_Status}.toString().equals( "3" )?"PAID":""]]></variableExpression>
+	</variable>
+	<variable name="totalAmount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{expense_Amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement uuid="bf0a1db3-0ca7-4af2-b9ce-ec23a26671dd" x="369" y="35" width="126" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bfd3b2fe-5c80-4018-98c6-b6978aaad9fa" x="0" y="0" width="495" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["USER REPORT FOR " + $P{empName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="226aca55-6d10-4677-ae7e-3bab8b9bd54c" x="0" y="0" width="73" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Submit Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="45773789-21e4-4f89-94bd-23d96210058d" x="73" y="0" width="116" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ffe2036-c0bb-4247-9fe9-6ab37db5506a" x="189" y="0" width="87" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Expense Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac499a7c-aee8-42bf-ba43-a750599a611d" x="349" y="0" width="75" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Expense Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="481bd05b-237b-45a9-81aa-6281d40a14ca" x="424" y="0" width="71" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paid Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c04c59c3-2397-4c29-b1ce-71e88997592d" x="276" y="0" width="73" height="28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement uuid="beea76e7-ca83-4cca-b20d-719274fc2a36" stretchType="RelativeToTallestObject" x="0" y="0" width="73" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_SubmitDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="cb3fcc10-a3a7-43d7-a5c2-b017a7ef31e8" stretchType="RelativeToTallestObject" x="73" y="0" width="116" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_Details}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ece5c034-6e8d-4a5c-88c1-bb2318ff4fa1" stretchType="RelativeToTallestObject" x="189" y="0" width="87" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_Type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement uuid="b5fe5a90-35d8-4567-87bb-b055bb77fcf3" stretchType="RelativeToTallestObject" x="424" y="0" width="71" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_PaidDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d996ecc1-ee52-4152-9bc9-4d93f03ebde5" x="349" y="0" width="75" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{expStatus}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a6e762fa-0f4b-47ae-b507-a47b69218bdf" stretchType="RelativeToTallestObject" x="276" y="0" width="73" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_Amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement uuid="efa6f542-4f62-4079-9b06-48d5cc6c1da9" x="276" y="22" width="73" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2c597332-d80b-4bc6-a13f-747e2bbbe801" x="189" y="22" width="87" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

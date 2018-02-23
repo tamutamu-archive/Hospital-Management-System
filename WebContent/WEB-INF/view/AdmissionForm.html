@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Daily account of Pharmacy</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Admission Details</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Date</label> 
+					<input 	type="text" id="dateAF" name="dateAF" />
+				</p>
+				<p>
+					<label>Serial No.</label> 
+					<input 	type="text" id="serialNoAF" name="serialNoAF" />
+				</p>
+				<p>
+					<label>Patient Name</label> 
+					<input 	type="text" id="patientName" name="patientName" />
+				</p>
+				<p>
+					<label>Address</label> 
+					<input 	type="text" id="addressAF" name="addressAF" />
+				</p>
+				<p>
+					<label>Mobile No</label> 
+					<input 	type="text" id="mobileNoAF" name="mobileNoAF" />
+				</p>
+				<p>
+					<label>Sex</label> 
+					<input 	type="text" id="sexAF" name="sexAF" />
+				</p>
+				<p>
+					<label>Age</label> 
+					<input 	type="text" id="ageAF" name="ageAF" />
+				</p>
+				<p>
+					<label>Reference Name</label> 
+					<input 	type="text" id="referenceNameAF" name="referenceNameAF" />
+				</p>
+				<p>
+					<label>Name of Operation</label> 
+					<input 	type="text" id="nameOfOperation" name="nameOfOperation" />
+				</p>
+				<p>
+					<label>Type of Operation</label> 
+					<input 	type="text" id="typeOfOperationAF" name="typeOfOperationAF" />
+				</p>
+				<p>
+					<label>Name of surgeon</label> 
+					<input 	type="text" id="nameOfSurgeonAF" name="nameOfSurgeonAF" />
+				</p>
+				<p>
+					<label>Medicine</label> 
+					<input 	type="text" id="medicineAF" name="medicineAF" />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Payment Details</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Normal Price</label> 
+					<input 	type="text" id="normalPriceAF" name="normalPriceAF" />
+				</p>
+				<p>
+					<label>Cont. Price</label> 
+					<input 	type="text" id="contPriceAF" name="contPriceAF" />
+				</p>
+				<p>
+					<label>Medicine Price</label> 
+					<input 	type="text" id="medicinePriceAF" name="medicinePriceAF" />
+				</p>
+				<p>
+					<label>Discount M</label> 
+					<input 	type="text" id="discountMAF" name="discountMAF" />
+				</p>
+				<p>
+					<label>Discount O</label> 
+					<input 	type="text" id="discountOAF" name="discountOAF" />
+				</p>
+				<p>
+					<label>Discount Authority</label> 
+					<input 	type="text" id="discountAuthorityAF" name="discountAuthorityAF" />
+				</p>
+				<p>
+					<label>Total</label> 
+					<input 	type="text" id="totalAF" name="totalAF" />
+				</p>
+				<p>
+					<label>First Payment</label> 
+					<input 	type="text" id="firstPaymentAF" name="firstPaymentAF" />
+				</p>
+				<p>
+					<label>Second Payment</label> 
+					<input 	type="text" id="secondPaymentAF" name="secondPaymentAF" />
+				</p>
+				<p>
+					<label>Last Payment</label> 
+					<input 	type="text" id="lastPaymentAF" name="lastPaymentAF" />
+				</p>
+				<p>
+					<label>Others Clearance</label> 
+					<input 	type="text" id="othersClearanceAF" name="othersClearanceAF" />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

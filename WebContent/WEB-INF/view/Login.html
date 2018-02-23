@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link type="text/css" href="/CMS/resources/css/screen.css" rel="stylesheet"></link>
+	<title>Login Page</title>
+</head>	
+<body id="login-bg">
+	<div id="login-holder">
+		<div id="logo-login">
+				
+			<h1>Login to HMS</h1>
+		</div>
+		<div class="clear"></div>
+		<div id="loginbox">
+			<div id="login-inner">
+			<form action="#" th:action="@{/j_spring_security_check}" method="post">
+				<table><!-- cellspacing="0" cellpadding="0" border="0" -->
+					<tbody>
+						<tr>
+							<th>Username</th>
+							<td>
+								<!-- <input class="login-inp" type="text"> -->
+								<input class="login-inp" type="text" id="j_username" name="j_username"/>
+							</td>
+						</tr>
+						<tr>
+							<th>Password</th>
+							<td>
+								<!-- <input class="login-inp" type="password" onfocus="this.value=''" value="************"> -->
+								<input class="login-inp" type="password" id="j_password" name="j_password"/>
+							</td>
+						</tr>
+					<tr>
+						<th></th>
+						<td valign="top">
+							<input id="login-check" class="checkbox-size" type="checkbox" />
+							<label for="login-check">Remember me</label>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<!-- <input class="submit-login" type="button"> -->
+							<input class="submit-login" type="submit" value="Login" name="commit"/>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<p th:text="${error}" style="color: silver;">Wrong user or password</p>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				</form>
+			</div>
+			<div class="clear"></div>
+			<!-- <a class="forgot-pwd" href="">Forgot Password?</a> -->
+		</div>
+	
+	
+		<!-- <div id="login-bg">
+		    <div id="loginbox">
+		      <h1>Login to CMS</h1>
+		      <form action="#" th:action="@{/j_spring_security_check}" method="post">
+		      
+		        <p><input type="text" placeholder="Username" id="j_username" name="j_username"/></p>
+		        
+		        <p><input type="password" placeholder="Password" id="j_password" name="j_password"/></p>
+	
+		        <p><input type="submit" value="Login" name="commit"/></p>
+		        
+		        <p th:text="${error}" style="color: silver">Wrong user or password</p>
+		      </form>
+		    </div>
+	  	</div> -->
+	 </div>
+</body>
+</html>

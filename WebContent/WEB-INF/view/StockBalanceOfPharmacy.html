@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Stock Balance Of Pharmacy</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Stock Balance Of Pharmacy</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Code No.</label> 
+					<input 	type="text" id="codeNoSBOP" name="codeNoSBOP" />
+				</p>
+				<p>
+					<label>Product Name</label> 
+					<input 	type="text" id="productNameSBOP" name="productNameSBOP"  />
+				</p>
+				<p>
+					<label>OP/BL</label> 
+					<input 	type="text" id="opBlSBOP" name="opBlSBOP"  />
+				</p>
+				<p>
+					<label>MRN</label> 
+					<input 	type="text" id="mrnSBOP" name="mrnSBOP"  />
+				</p>
+				<p>
+					<label>MIN</label> 
+					<input 	type="text" id="minSBOP" name="minSBOP"  />
+				</p>
+				<p>
+					<label>Balance</label> 
+					<input 	type="text" id="balanceSBOP" name="balanceSBOP"  />
+				</p>
+				<p>
+					<label>P.Rate</label> 
+					<input 	type="text" id="pRateSBOP" name="pRateSBOP"  />
+				</p>
+				<p>
+					<label>Amount</label> 
+					<input 	type="text" id="amountSBOP" name="amountSBOP"  />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Code No.</th>
+						<th>Product Name</th>
+						<th>OP/BL</th>
+						<th>MRN</th>
+						<th>MIN</th>
+						<th>Balance</th>
+						<th>P.Rate</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

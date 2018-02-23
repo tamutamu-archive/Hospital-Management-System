@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Daily account of Pharmacy</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Daily account of Pharmacy</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Description</label> 
+					<input 	type="text" id="descriptionDAOP" name="descriptionDAOP" />
+				</p>
+				<p>
+					<label>Debit</label> 
+					<input 	type="text" id="debitDAOP" name="debitDAOP"  />
+				</p>
+				<p>
+					<label>Credit</label> 
+					<input 	type="text" id="creditDAOP" name="creditDAOP"  />
+				</p>
+				<p>
+					<label>Balance</label> 
+					<input 	type="text" id="balanceDAOP" name="balanceDAOP"  />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Description</th>
+						<th>Debit</th>
+						<th>Credit</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Statement Of Company</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Statement Of Company</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main}" method="POST"
+				th:object="${expense}">
+				<p>
+					<label>Name Of Company</label> 
+					<input 	type="text" id="nameOfCompanySOC" name="nameOfCompanySOC" />
+				</p>
+				<p>
+					<label>Invoice No.</label> 
+					<input 	type="text" id="invoiceNoSOC" name="invoiceNoSOC"  />
+				</p>
+				<p>
+					<label>Credit Date</label> 
+					<input 	type="text" id="creditDateSOC" name="creditDateSOC"  />
+				</p>
+				<p>
+					<label>Transaction Credit</label> 
+					<input 	type="text" id="transactionCreditSOC" name="transactionCreditSOC"  />
+				</p>
+				<p>
+					<label>Debit date</label> 
+					<input 	type="text" id="debitDateSOC" name="debitDateSOC"  />
+				</p>
+				<p>
+					<label>Transaction Debit</label> 
+					<input 	type="text" id="transactionDebitSOC" name="transactionDebitSOC"  />
+				</p>
+					<p>
+					<label>Balance</label> 
+					<input 	type="text" id="balanceSOC" name="balanceSOC"  />
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Name Of Company</th>
+						<th>Invoice No.</th>
+						<th>Credit Date</th>
+						<th>Transaction Credit</th>
+						<th>Debit date</th>
+						<th>Transaction Dedit</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

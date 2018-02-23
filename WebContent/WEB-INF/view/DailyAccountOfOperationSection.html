@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>Daily account of Operation Section</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>Daily account of Operation Section</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main/dailyAccountOfOperationSection}" method="POST"
+				th:object="${dailyAccountOfOperationSection}">
+				<p>
+					<label>Description</label> 
+					<input 	type="text" id="descriptionDAOOS" name="descriptionDAOOS" th:field="*{descriptionDAOOS}" />
+				</p>
+				<p>
+					<label>Reg/Invoice no.</label> 
+					<input 	type="text" id="regInvNoDAOOS" name="regInvNoDAOOS" th:field="*{regInvNoDAOOS}" />
+				</p>
+				<p>
+					<label>Debit</label> 
+					<input 	type="text" id="debitDAOOS" name="debitDAOOS" th:field="*{debitDAOOS}" />
+				</p>
+				<p>
+					<label>Credit</label> 
+					<input 	type="text" id="creditDAOOS" name="creditDAOOS" th:field="*{creditDAOOS}" />
+				</p>
+				<p>
+					<label>Balance</label> 
+					<input 	type="text" id="balanceDAOOS" name="balanceDAOOS" th:field="*{balanceDAOOS}" />
+				</p>	
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>	
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Reg/Invoice no.</th>
+					<th>Debit</th>
+					<th>Credit</th>
+					<th>Balance</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dailyAccountOfOperationSection : ${dailyAccountOfOperationSectionList}">
+					<td th:text="${dailyAccountOfOperationSection.descriptionDAOOS}"></td>
+					<td th:text="${dailyAccountOfOperationSection.regInvNoDAOOS}"></td>
+					<td th:text="${dailyAccountOfOperationSection.debitDAOOS}"></td>
+					<td th:text="${dailyAccountOfOperationSection.creditDAOOS}"></td>
+					<td th:text="${dailyAccountOfOperationSection.balanceDAOOS}"></td>			
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

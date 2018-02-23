@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="Layout :: headerFragment">
+	
+	<title>User Creation Page</title>
+</head>
+<body>
+	<div th:substituteby="Layout :: defaultFragment"></div>
+	<div id="body">
+		<fieldset>
+			<legend>User Entry</legend>
+			<div id="box">
+				<form action="#" th:action="@{/main/createUser}" method="POST"
+				th:object="${user}">
+				<p>
+					<label>Login ID</label> 
+					<input 	type="text" id="userLoginId" name="userLoginId" th:field="*{userLoginId}" />
+				</p>
+				<p>
+					<label>Password</label>
+					<input 	type="text" id="userPassword" name="userPassword" th:field="*{userPassword}" />
+				</p>
+				
+				<p>	
+					<label>Full Name</label>
+					<input 	type="text" id="userFullName" width="140" name="userFullName" th:field="*{userFullName}" />
+				</p>		
+				<p>
+					<label>Email</label>
+					<input 	type="text" id="userEmail" name="userEmail" th:field="*{userEmail}" />
+				</p>
+				<p>
+					<label>Phone no</label>
+					<input 	type="text" id="userPhoneNo" name="userPhoneNo" th:field="*{userPhoneNo}" />
+				</p>
+			<!-- 	<p>
+					<label>Department</label>
+					<select name="userDepartment" th:field="*{userDepartment}">
+									<option value="Software">Software</option>
+									<option value="E-media">E-media</option>
+									<option value="All">All</option>
+					</select>
+				</p> -->
+				<input 	type="hidden" id="userStatus" name="userStatus" th:field="*{userStatus}" />
+				<p>	
+					<label>User Role</label>
+					<select id="userRole" name="userRole" th:field="*{userRole}">
+									<option value="Admin">Admin</option>
+									<!-- <option value="HR">HR</option>
+									<option value="User">User</option> -->
+					</select>
+				</p>
+				<p>
+					<button class="formbutton" name="Submit" type="submit">Submit</button>
+				</p>		
+			</form>
+			</div>
+		</fieldset>
+		<br/><br/>
+		<div>
+			<table>
+				<thead>
+					<tr>		
+						<th>Login ID</th>
+						<th>Full Name</th>
+						<th>Email</th>
+						<th>Phone no</th>
+						<th>User Depertment</th>
+						<th>User Role</th>
+						<th>User Status</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${userList}">
+						<td th:text="${user.userLoginId}"></td>
+						<td th:text="${user.userFullName}"></td>
+						<td th:text="${user.userEmail}"></td>
+						<td th:text="${user.userPhoneNo}"></td>
+						<td th:text="${user.userDepartment}"></td>
+						<td th:text="${user.userRole}"></td>
+						<td><label th:if="${user.userStatus==false}">Deactivated</label>
+							<label th:if="${user.userStatus==true}">Activated</label> 
+						</td>
+						<td width="145px"><a th:href="@{'/main/activateUser/'+${user.userLoginId}}">Activate</a> | 
+						    <a th:href="@{'/main/deactivateUser/'+${user.userLoginId}}">Deactivate</a>
+						</td>
+						<td width="85px"><a th:href="@{'/main/editUser/'+${user.userLoginId}}">Edit</a> |
+						    <a th:href="@{'/main/deleteUser/'+${user.userLoginId}}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div th:substituteby="Layout :: footerFragment"></div>
+</body>
+</html>

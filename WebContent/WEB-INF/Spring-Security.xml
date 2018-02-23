@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/security 
+			http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<security:global-method-security pre-post-annotations="enabled"/>
+<!-- <security:expression-handler ref="expressionHandler"/> -->
+
+	<security:http auto-config="true" use-expressions="true"
+		access-denied-page="/auth/denied">
+
+		<security:form-login login-page="/auth/login"
+			authentication-success-handler-ref="loginSuccessHandler"
+			authentication-failure-handler-ref="loginFailureHandler" />
+			
+			<!-- <security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')" />			
+			<security:intercept-url pattern="/main/expense" access="hasRole('ROLE_EMPLOYEE')" />
+			<security:intercept-url pattern="/main/hr" access="hasRole('ROLE_HR')" /> -->
+	
+			
+		<security:session-management invalid-session-url="/auth/logout" />
+
+		<security:logout logout-success-url="/auth/logout" invalidate-session="true"/>
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">		
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="customUserDetailsService" class="com.sv.pghms.service.CustomUserDetailsServiceImpl" />
+	<bean id="loginSuccessHandler" class="com.sv.pghms.service.LoginSuccessHandlerService" />
+	<bean id="loginFailureHandler" class="com.sv.pghms.service.LoginFailureHandlerService" />
+
+</beans>
+
+<!-- default-target-url="/main/user" authentication-failure-url="/auth/loginFailed" -->

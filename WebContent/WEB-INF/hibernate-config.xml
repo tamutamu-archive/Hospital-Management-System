@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans" 
+       	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       	xmlns:p="http://www.springframework.org/schema/p" 
+       	xmlns:tx="http://www.springframework.org/schema/tx"
+       	xmlns:context="http://www.springframework.org/schema/context"
+       	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<context:annotation-config />		
+  
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/pghms" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+    
+    <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+		<property name="hibernateProperties">
+			<props>
+				
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.pool_size">1</prop>
+     			<prop key="hibernate.hbm2ddl.auto">create</prop>
+     			<prop key="hibernate.connection.SetBigStringTryBlob">true</prop> 
+			</props>
+		</property>
+	</bean>
+		
+	<bean id="pharmacyService" class="com.sv.pghms.service.PharmacyServiceImpl">
+	</bean> 
+	
+	<bean id="pharmacyDao" class="com.sv.pghms.dao.PharmacyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />  
+	</bean>
+	
+	<bean id="pathologyService" class="com.sv.pghms.service.PathologyServiceImpl">
+	</bean> 
+	
+	<bean id="pathologyDao" class="com.sv.pghms.dao.PathologyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />  
+	</bean>
+	
+	<bean id="customUserDetailsService" class="com.sv.pghms.service.CustomUserDetailsServiceImpl">
+	</bean> 
+
+	<bean id="customUserDetailsDao" class="com.sv.pghms.dao.CustomUserDetailsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />  
+	</bean>
+
+	<bean id="userService" class="com.sv.pghms.service.UserServiceImpl">
+	</bean> 
+	
+	<bean id="userDao" class="com.sv.pghms.dao.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />  
+	</bean>
+	
+	<!-- <bean id="adminService" class="com.sv.pghms.service.AdminServiceImpl">
+	</bean> 
+	
+	<bean id="adminDao" class="com.sv.pghms.dao.AdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />   
+	</bean> -->
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />	
+	
+	<bean id="transactionManager"  
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean> 
+	
+</beans>
